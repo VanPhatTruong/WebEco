@@ -1,0 +1,138 @@
+﻿@model IEnumerable<WebEco.Models.Entity.Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Product List</title>
+
+    <style>
+        .product-item {
+            display: inline-block;
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+            cursor: pointer;
+        }
+
+            .product-item img {
+                width: 150px;
+                height: 150px;
+            }
+    </style>
+</head>
+<body>
+    <form class="col-3 d-flex flex-row gap-2" style="align-items: baseline;"
+          asp-area=""
+          asp-controller="Product"
+          asp-action="Index"
+          method="get">
+        <div class="mb-3">
+            <input for="timkiem" type="text" class="form-control" id="timkiem" name="timkiem" aria-describedby="tim kiem noi dung">
+        </div>
+        <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+    </form>
+    <h2>Danh sách sản phẩm</h2>
+    @if (Model.Any())
+    {
+        @foreach (var item in Model)
+        {
+            <div class="product-item">
+                <a asp-area="" asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">
+                    <div>
+                        @if (item.UrlImage == null)
+                        {
+                            <img src="~/images/noimage.jpg" alt="...">
+                        }
+                        else
+                        {
+                            <img src="@item.UrlImage" alt="...">
+                        }
+
+                        <h5>@item.TenSanPham</h5>
+                        <p>@item.Mota</p>
+                        <p>Giá: @item.Gia</p>
+                    </div>
+                </a>
+            </div>
+        }
+    }
+    else
+    {
+        <p>Không có kết quả tìm kiếm.</p>
+    }
+    
+</body>
+</html>
+@* (<form class="col-3 d-flex flex-row gap-2" style="align-items: baseline;"
+     asp-area=""
+    asp-controller="Product"
+    asp-action="Index"
+      method="get"> 
+    <div class="mb-3">
+        <input for="timkiem" type="text" class="form-control" id="timkiem" name="timkiem" aria-describedby="tim kiem noi dung">
+    </div>
+    <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+</form>
+<table class="table table-striped overflow-scroll">
+    <thead>
+        <tr class="text-center">
+            <th scope="col">STT</th>
+            <th scope="col">Ảnh đại diện</th>
+            <th scope="col">Tên sản phẩm</th>
+            <th scope="col">Mô tả</th>
+            <th scope="col">Giá bán</th>
+            @*<th scope="col">Trạng thái</th>
+            <th scope="col">Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            int i = 0;
+            foreach (var item in Model)
+            {
+                i++;
+                <tr>
+                    <td class="text-center">@i</td>
+                    <td class="text-center">
+                        <img style="width: 50px; height: 50px;" src="@item.UrlImage" />
+                    </td>
+                    @*<td class="text-center">
+                        <img style="width: 50px; height: 50px;" src="`http://localhost:5275/` + @item.UrlImage" />
+            </td>
+                    <td class="text-center">@item.TenSanPham</td>
+                    <td class="text-center">@item.Mota</td>
+                    <td class="text-center">@item.Gia</td>
+                    @*<td class="text-center @((bool)item.IsActive ? "text-success" : "text-danger")">
+                        @((bool)item.IsActive ? "Kích hoạt" : "Tạm khóa")
+            </td> 
+                    <td class="text-center"> @*thao tac sua xoa
+                        @* <a class="px-2" href="@Url.Action("Xoa", "Product", new { id = item.Id })">
+                        <a class="px-2" asp-area="" asp-controller="Product" asp-action="Xoa" asp-route-id="@item.Id">
+                            <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                        </a>
+                        <a class="px-2" href="@Url.Action("Capnhat", "Product", new { id = item.Id})">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <caption>
+                Không có dữ liệu
+            </caption>
+        }
+    </tbody>
+</table>
+<script>
+
+</script>)*@
+

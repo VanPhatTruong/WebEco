@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "Them";
+    Layout = "~/Views/Shared/_LayoutAdmin";
+}
+<div class="d-flex justify-content-center">
+    <div class="col-6 px-5 pt-5 border rounded-3 shadow-lg">
+        <h2 class="text-center fw-bold pb-4">Thêm sản phẩm</h2>
+        <hr />
+        <form asp-area="" asp-controller="Home" asp-action="Them" method="post">
+            <div class="mb-4">
+                <label for="tensanpham" class="form-label fw-bolder">Tên sản phẩm</label>
+                <input for="tensanpham" type="text" class="form-control" name="tensanpham" value="" aria-describedby="text">
+            </div>
+            <div class="mb-4">
+                <label for="mota" class="form-label fw-bolder">Mô tả</label>
+                <input for="mota" type="text" class="form-control" name="mota" value="" aria-describedby="text">
+            </div>
+            <div class="mb-4">
+                <label for="gia" class="form-label fw-bolder">Giá bán</label>
+                <input for="gia" type="number" class="form-control" name="gia" value="" aria-describedby="text">
+            </div>
+            <div class="mb-4">
+                <label for="hinhanh" class="form-label fw-bolder">Ảnh đại diện</label>
+                <div class="d-flex justify-content-center align-items-center py-2">
+                    <img id="showimage" style="width: 450px; height: 300px;" src="~/images/noimage.jpg" alt="..." />
+                </div>
+                <input for="hinhanh" type="file" class="form-control" name="hinhanh" onchange="readURL(this)" aria-describedby="image">
+            </div>
+            <hr />
+            <div class="d-flex align-items-center justify-content-center my-5 gap-5">
+                <button type="submit" id="themgsanpham" class="btn btn-primary px-4 py-2">Thêm sản phẩm</button>
+            </div>
+        </form>
+    </div>
+</div>
+

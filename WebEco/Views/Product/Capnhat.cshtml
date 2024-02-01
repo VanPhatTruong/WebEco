@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "Capnhat";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="d-flex justify-content-center">
+    <div class="col-6 px-5 pt-5 border rounded-3 shadow-lg">
+        <h2 class="text-center fw-bold pb-4">Cập nhật thông tin</h2>
+        <hr />
+
+        <form action="/Product/Capnhat" method="post">
+            <input type="text" id="id" name="id" value="@Model.Id" aria-describedby="text" hidden>
+            <div class="mb-4">
+                <label for="TenSanPham" class="form-label fw-bolder">Tên sản phẩm</label>
+                <input type="text" class="form-control" id="TenSanPham" name="TenSanPham" value="@Model.TenSanPham" aria-describedby="text">
+            </div>
+            <div class="mb-4">
+                <label for="Mota" class="form-label fw-bolder">Mô tả</label>
+                <input type="text" class="form-control" id="Mota" name="Mota" value="@Model.Mota" aria-describedby="text">
+            </div>
+            <div class="mb-4">
+                <label for="Gia" class="form-label fw-bolder">Giá bán</label>
+                <input type="number" class="form-control" id="Gia" name="Gia" min="0" value="@Model.Gia" aria-describedby="text">
+            </div>
+            <hr />
+            <div class="d-flex align-items-center justify-content-center my-5 gap-5">
+                <button type="submit" id="themthongtin" class="btn btn-primary px-4 py-2">Cập nhật thông tin</button>
+            </div>
+        </form>
+    </div>
+</div>
+
